@@ -1,3 +1,4 @@
+<<<<<<< codex/implement-unified-calendar-and-notifications
 # Project Tracker
 
 ## Completed
@@ -11,3 +12,10 @@
 ## Upcoming
 
 - [ ] Further integration tasks
+=======
+# Development Tracker
+
+## Completed
+
+- e-Filing Government API Adapters
+>>>>>>> main

@@ -6,10 +6,12 @@
 
 - Multi-tenant SaaS: Secure, isolated databases for each law firm
 - UAE Pass & WebAuthn authentication, 2FA, device management
+- Role-based access control (Admin, Senior Lawyer, Junior Lawyer, Legal Assistant, Client)
 - Advanced case, client, and court management (CRUD, calendar, e-Filing)
 - AI-powered legal drafting, sentiment analysis, outcome prediction
 - KYC, AML, and sanctions checks; police and business registry integration
 - Digital document handling: OCR, e-Notary, digital signature, blockchain verification
+- Mock e-Filing adapters for MOJ, ADJD, Dubai and RAK courts
 - Finance: DubaiPay, AD Pay, VAT, ERPNext/Odoo integration
 - Business intelligence dashboards, custom reporting, legal knowledge graph
 - Unified calendar and notification system (SMS, email, WebSocket) for hearings and deadlines
@@ -36,6 +38,7 @@
 5. **Run migrations and seeders:**
    ```sh
    php artisan migrate --seed
+    php seed.php
    ```
 6. **Serve the app:**
    ```sh
@@ -52,7 +55,11 @@ Laravel notifications via SMS, email, and WebSocket channels.
 
 - [VIPE Master Doc](./docs/RYReLawyer_VIPE_Master_Latest_Enhanced.md)
 - [Agent Onboarding & Sprint Guide](./docs/RYReLawyer_Agent_Onboarding_Sprint_Codex.md)
+<<<<<<< codex/implement-unified-calendar-and-notifications
 - [Unified Calendar Guide](./docs/calendar.md)
+=======
+- [Authentication Setup](./docs/authentication.md)
+>>>>>>> main
 
 ## Contributing
 
