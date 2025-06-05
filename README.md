@@ -6,6 +6,7 @@
 
 - Multi-tenant SaaS: Secure, isolated databases for each law firm
 - UAE Pass & WebAuthn authentication, 2FA, device management
+- Role-based access control (Admin, Senior Lawyer, Junior Lawyer, Legal Assistant, Client)
 - Advanced case, client, and court management (CRUD, calendar, e-Filing)
 - AI-powered legal drafting, sentiment analysis, outcome prediction
 - KYC, AML, and sanctions checks; police and business registry integration
@@ -35,6 +36,7 @@
 5. **Run migrations and seeders:**
    ```sh
    php artisan migrate --seed
+    php seed.php
    ```
 6. **Serve the app:**
    ```sh
