@@ -45,6 +45,7 @@
 
 - [VIPE Master Doc](./docs/RYReLawyer_VIPE_Master_Latest_Enhanced.md)
 - [Agent Onboarding & Sprint Guide](./docs/RYReLawyer_Agent_Onboarding_Sprint_Codex.md)
+- [Authentication Setup](./docs/authentication.md)
 
 ## Contributing
 
