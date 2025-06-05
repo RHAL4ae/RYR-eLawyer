@@ -30,6 +30,7 @@
    ```
 4. **Start local services (Docker recommended):**
    ```sh
+
    docker-compose up -d
    ```
 5. **Run migrations and seeders:**
@@ -40,6 +41,12 @@
    ```sh
    php artisan serve
    ```
+
+### KYC Module Example
+Run a mock KYC check:
+```bash
+python kyc/onboarding.py "John Doe" 784197812345678
+```
 
 ## Documentation
 
