@@ -11,6 +11,7 @@
 - AI-powered legal drafting, sentiment analysis, outcome prediction
 - KYC, AML, and sanctions checks; police and business registry integration
 - Digital document handling: OCR, e-Notary, digital signature, blockchain verification
+- Mock e-Filing adapters for MOJ, ADJD, Dubai and RAK courts
 - Finance: DubaiPay, AD Pay, VAT, ERPNext/Odoo integration
 - Business intelligence dashboards, custom reporting, legal knowledge graph
 - Mobile PWA/iOS/Android, RESTful API & webhooks
