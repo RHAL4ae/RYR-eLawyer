@@ -8,6 +8,7 @@
 - UAE Pass & WebAuthn authentication, 2FA, device management
 - Advanced case, client, and court management (CRUD, calendar, e-Filing)
 - AI-powered legal drafting, sentiment analysis, outcome prediction
+- AI-powered peer review and quality assurance module
 - KYC, AML, and sanctions checks; police and business registry integration
 - Digital document handling: OCR, e-Notary, digital signature, blockchain verification
 - Finance: DubaiPay, AD Pay, VAT, ERPNext/Odoo integration
@@ -40,6 +41,10 @@
    ```sh
    php artisan serve
    ```
+## Peer Review Module
+
+This repository now includes a minimal peer review and quality assurance system located in the `peer_review` directory. Install dependencies with `pip install -r requirements.txt` and run `python -m peer_review.example_usage` for a demo.
+
 
 ## Documentation
 

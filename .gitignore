@@ -28,3 +28,7 @@ coverage/
 *.swp
 *.tmp
 *.pid
+
+# Peer review module
+__pycache__/
+peer_review_data.json
