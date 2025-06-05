@@ -1,0 +1,35 @@
+name: PR Preview Deployment
+
+on:
+  pull_request:
+    branches: [ main, develop, staging ]
+
+jobs:
+  pr-preview:
+    runs-on: ubuntu-latest
+    environment: preview
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up PHP & Node.js
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: |
+          composer install --no-interaction
+          npm install
+      - name: Build assets
+        run: npm run build
+      - name: Deploy PR Preview
+        env:
+          PREVIEW_DEPLOY_KEY: ${{ secrets.PREVIEW_DEPLOY_KEY }}
+        run: |
+          # Your deployment script, e.g. upload to preview server or Vercel/Netlify
+          echo "Deploying PR preview for ${{ github.head_ref }}"
+      - name: Comment PR with Preview Link
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          message: "Preview deployed! [View Preview](https://preview.example.com/pr/${{ github.event.number }})"
