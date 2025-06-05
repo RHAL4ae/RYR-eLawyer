@@ -76,7 +76,14 @@ Contributions are welcome! Please read the [contribution guidelines](./CONTRIBUT
 
 ## License
 
+
+
 See [LICENSE](./LICENSE) for details.
+
+## Continuous CI/CD Monitoring
+
+An automated script `scripts/auto_ci_monitor.sh` performs periodic code scanning, testing, and logging. Logs are stored in `./logs`. See [Implementation Tracker](./docs/ImplementationTracker.md) for monitoring status.
+
 
 ## Maintainers
 
