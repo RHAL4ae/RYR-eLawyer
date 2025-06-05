@@ -33,6 +33,7 @@
    ```
 4. **Start local services (Docker recommended):**
    ```sh
+
    docker-compose up -d
    ```
 5. **Run migrations and seeders:**
@@ -45,11 +46,19 @@
    php artisan serve
    ```
 
+<<<<<<< codex/build-kyc-module-for-onboarding
+### KYC Module Example
+Run a mock KYC check:
+```bash
+python kyc/onboarding.py "John Doe" 784197812345678
+```
+=======
 ## Unified Calendar & Notification System
 
 This release introduces a unified calendar with automatic task generation for
 statute of limitations and key legal deadlines. Hearings and reminders trigger
 Laravel notifications via SMS, email, and WebSocket channels.
+>>>>>>> main
 
 ## Documentation
 
