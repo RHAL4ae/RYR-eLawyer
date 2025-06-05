@@ -14,6 +14,7 @@
 - Business intelligence dashboards, custom reporting, legal knowledge graph
 - Mobile PWA/iOS/Android, RESTful API & webhooks
 - Privacy-by-design, GDPR/UAE/ISO compliance
+- Client behavioral analytics for proactive outreach
 
 ## Quick Start
 
