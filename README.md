@@ -8,6 +8,7 @@
 - UAE Pass & WebAuthn authentication, 2FA, device management
 - Advanced case, client, and court management (CRUD, calendar, e-Filing)
 - AI-powered legal drafting, sentiment analysis, outcome prediction
+- AI-powered legal drafting, sentiment and tone analysis, outcome prediction
 - KYC, AML, and sanctions checks; police and business registry integration
 - Digital document handling: OCR, e-Notary, digital signature, blockchain verification
 - Finance: DubaiPay, AD Pay, VAT, ERPNext/Odoo integration
@@ -27,6 +28,7 @@
    ```sh
    composer install
    npm install
+   pip install -r requirements.txt
    ```
 4. **Start local services (Docker recommended):**
    ```sh
@@ -40,6 +42,17 @@
    ```sh
    php artisan serve
    ```
+
+### Sentiment & Tone Analysis
+
+Example usage of the analysis utilities:
+
+```sh
+python analysis/aggregate.py data/sample_records.json case
+```
+
+This will output average sentiment for each case and save a chart as
+`aggregate_case.png`.
 
 ## Documentation
 

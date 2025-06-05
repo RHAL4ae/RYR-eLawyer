@@ -1,0 +1,5 @@
+[
+  {"case": "CaseA", "client": "Client1", "hearing": "Hearing1", "text": "The defendant might have acted in self defense."},
+  {"case": "CaseA", "client": "Client1", "hearing": "Hearing2", "text": "We strongly refute all allegations."},
+  {"case": "CaseB", "client": "Client2", "hearing": "Hearing1", "text": "This evidence clearly shows the contract terms were breached."}
+]
