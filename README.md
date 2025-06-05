@@ -12,6 +12,7 @@
 - Digital document handling: OCR, e-Notary, digital signature, blockchain verification
 - Finance: DubaiPay, AD Pay, VAT, ERPNext/Odoo integration
 - Business intelligence dashboards, custom reporting, legal knowledge graph
+- Unified calendar and notification system (SMS, email, WebSocket) for hearings and deadlines
 - Mobile PWA/iOS/Android, RESTful API & webhooks
 - Privacy-by-design, GDPR/UAE/ISO compliance
 
@@ -40,6 +41,12 @@
    ```sh
    php artisan serve
    ```
+
+## Unified Calendar & Notification System
+
+This release introduces a unified calendar with automatic task generation for
+statute of limitations and key legal deadlines. Hearings and reminders trigger
+Laravel notifications via SMS, email, and WebSocket channels.
 
 ## Documentation
 
