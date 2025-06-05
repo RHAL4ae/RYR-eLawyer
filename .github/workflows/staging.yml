@@ -1,0 +1,46 @@
+name: Staging Deploy
+
+on:
+  push:
+    branches: [ staging ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy-staging:
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up PHP/Node.js
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install Dependencies
+        run: |
+          composer install --no-interaction --prefer-dist
+          npm install
+      - name: Run Lint & Tests
+        run: |
+          vendor/bin/phpcs --standard=PSR12 app/
+          vendor/bin/phpunit
+          npx jest
+      - name: Build Assets
+        run: npm run build
+      - name: Deploy to Staging
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.STAGING_SSH_KEY }}
+        run: |
+          # Example: rsync files to staging server (replace with your logic)
+          echo "Deploying to staging server"
+      - name: Notify on Success
+        uses: slackapi/slack-github-action@v1.25.0
+        with:
+          payload: |
+            {
+              "text": "Staging deploy succeeded! ${{ github.repository }} #${{ github.run_number }}"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

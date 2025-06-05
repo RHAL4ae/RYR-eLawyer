@@ -1,0 +1,36 @@
+name: Artifact Promotion
+
+on:
+  workflow_dispatch:
+    inputs:
+      artifact_name:
+        description: 'Name of artifact to promote'
+        required: true
+      from_env:
+        description: 'Source environment (e.g. staging)'
+        required: true
+      to_env:
+        description: 'Target environment (e.g. production)'
+        required: true
+
+jobs:
+  promote-artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact from ${{ github.event.inputs.from_env }}
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ github.event.inputs.artifact_name }}
+          path: ./artifact
+      - name: Deploy artifact to ${{ github.event.inputs.to_env }}
+        env:
+          SSH_KEY: ${{ secrets.PROMOTION_DEPLOY_KEY }}
+        run: |
+          # Add logic to upload artifact to target environment (e.g., rsync, scp, cloud CLI)
+          echo "Promoting artifact to ${{ github.event.inputs.to_env }}"
+      - name: Notify team
+        uses: slackapi/slack-github-action@v1.25.0
+        with:
+          payload: '{"text":"Artifact ${{ github.event.inputs.artifact_name }} promoted from ${{ github.event.inputs.from_env }} to ${{ github.event.inputs.to_env }}"}'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
