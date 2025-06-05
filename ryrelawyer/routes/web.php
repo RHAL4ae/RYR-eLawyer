@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+use App\Http\Controllers\OnboardingController;
+
+Route::get('register', [OnboardingController::class, 'create'])->name('onboarding.create');
+Route::post('register', [OnboardingController::class, 'store'])->name('onboarding.store');
+Route::get('register/success', [OnboardingController::class, 'success'])->name('onboarding.success');
