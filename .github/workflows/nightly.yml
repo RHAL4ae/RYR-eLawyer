@@ -1,0 +1,43 @@
+name: Nightly Build
+
+on:
+  schedule:
+    - cron: '0 1 * * *'  # Runs every day at 01:00 UTC
+
+jobs:
+  nightly:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up PHP & Node.js
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: |
+          composer install --no-interaction
+          npm install
+      - name: Run tests
+        run: |
+          vendor/bin/phpunit
+          npx jest
+      - name: Build assets
+        run: npm run build
+      - name: Archive nightly build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: nightly-build-${{ github.run_number }}
+          path: |
+            public/build
+            storage/app/public
+            bootstrap/cache
+        retention-days: 14
+      - name: Notify on Slack
+        uses: slackapi/slack-github-action@v1.25.0
+        with:
+          payload: '{"text":"Nightly build completed: ${{ github.repository }} #${{ github.run_number }}"}'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
