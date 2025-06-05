@@ -1,0 +1,55 @@
+name: Production Deploy
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy-prod:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up PHP/Node.js
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install Dependencies
+        run: |
+          composer install --no-interaction --prefer-dist
+          npm install
+      - name: Run Lint & Tests
+        run: |
+          vendor/bin/phpcs --standard=PSR12 app/
+          vendor/bin/phpunit
+          npx jest
+      - name: Build Assets
+        run: npm run build
+      - name: Deploy to Production
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.PRODUCTION_SSH_KEY }}
+        run: |
+          # Example: rsync files to production server (replace with your logic)
+          echo "Deploying to production server"
+      - name: Upload Release Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-release-${{ github.run_number }}
+          path: |
+            public/build
+            storage/app/public
+            bootstrap/cache
+        retention-days: 30
+      - name: Notify on Success
+        uses: slackapi/slack-github-action@v1.25.0
+        with:
+          payload: |
+            {
+              "text": "Production deploy succeeded! ${{ github.repository }} #${{ github.run_number }}"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
