@@ -8,12 +8,17 @@
 - UAE Pass & WebAuthn authentication, 2FA, device management
 - Advanced case, client, and court management (CRUD, calendar, e-Filing)
 - AI-powered legal drafting, sentiment analysis, outcome prediction
+- Multilingual legal drafting engine with real-time translation preview and export
 - KYC, AML, and sanctions checks; police and business registry integration
 - Digital document handling: OCR, e-Notary, digital signature, blockchain verification
 - Finance: DubaiPay, AD Pay, VAT, ERPNext/Odoo integration
 - Business intelligence dashboards, custom reporting, legal knowledge graph
 - Mobile PWA/iOS/Android, RESTful API & webhooks
 - Privacy-by-design, GDPR/UAE/ISO compliance
+
+## Multilingual Legal Drafting Engine
+
+The `drafting_engine.py` script allows lawyers to translate and adapt legal documents between English, Arabic, and other MENA languages. It supports real-time translation preview, jurisdiction-specific terminology mapping, tone adjustment, and export to PDF or Word.
 
 ## Quick Start
 
@@ -27,6 +32,7 @@
    ```sh
    composer install
    npm install
+   pip install -r requirements.txt
    ```
 4. **Start local services (Docker recommended):**
    ```sh
@@ -39,6 +45,8 @@
 6. **Serve the app:**
    ```sh
    php artisan serve
+   # Example usage of the drafting engine
+   python drafting_engine.py --text "Hello" --target_lang ar --export pdf --output draft.pdf
    ```
 
 ## Documentation

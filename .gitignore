@@ -28,3 +28,4 @@ coverage/
 *.swp
 *.tmp
 *.pid
+__pycache__/
