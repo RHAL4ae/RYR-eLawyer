@@ -60,6 +60,13 @@ See [LICENSE](./LICENSE) for details.
 - AI Agent Orchestrator
 - LegalTech Engineering Team
 
+## Development Tracker
+
+| Module | Status |
+| ------ | ------ |
+| Document/OCR/e-Notary/Signature | Completed |
+
+
 ---
 
 *Built with ❤️ for UAE/MENA legal innovators.*
