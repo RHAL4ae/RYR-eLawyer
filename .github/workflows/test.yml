@@ -1,0 +1,43 @@
+name: Test Suite
+
+on:
+  push:
+    branches: [ develop, test ]
+  pull_request:
+    branches: [ develop, test ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install Composer & NPM dependencies
+        run: |
+          composer install --no-interaction
+          npm install
+      - name: Copy .env.example
+        run: cp .env.example .env
+      - name: Generate App Key
+        run: php artisan key:generate
+      - name: Run Migrations
+        run: php artisan migrate --force
+      - name: Run PHPUnit
+        run: vendor/bin/phpunit --coverage-text
+      - name: Run JS Tests (Jest)
+        run: npx jest --coverage
+      - name: Archive Test Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-${{ github.run_number }}
+          path: |
+            storage/logs
+            coverage/
+        retention-days: 5
